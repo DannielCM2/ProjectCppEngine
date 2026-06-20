@@ -1,10 +1,10 @@
 # ProjectCppEngine
   A personal C++ game engine project for learning engine architecture, rendering, and performance optimization.
 
-# # Requirments
+## Requirments
   C++17
 
-# # # Milestone
+### Milestone
   - [ ] Engine class
   - [ ] Main loop
   - [ ] Window creation
