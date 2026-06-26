@@ -3,10 +3,14 @@
 
 ## Requirments
   C++17
+  CMAKE
+
+## Installation
+  cmake --build build
 
 ### Milestone
-  - [ ] Engine class
-  - [ ] Main loop
-  - [ ] Window creation
+  - [x] Engine class
+  - [x] Main loop
+  - [x] Window creation
+  - [x] Close window event
   - [ ] Delta time
-  - [ ] Close window event
