@@ -2,8 +2,8 @@
   A personal C++ game engine project for learning engine architecture, rendering, and performance optimization.
 
 ## Requirments
-  C++17
-  CMAKE
+  - C++17
+  - CMAKE
 
 ## Installation
   cmake --build build
