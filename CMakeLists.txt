@@ -26,4 +26,4 @@ add_executable(game
     ${GAME_SOURCES}
 )
 
-target_link_libraries(game PRIVATE engine)
+target_link_libraries(game PRIVATE winmm engine)
