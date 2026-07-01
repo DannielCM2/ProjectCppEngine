@@ -23,9 +23,9 @@
 - [x] Delta time
 
 ## Milestone 2 - Input System
+- [ ] Input manager
 - [ ] Keyboard input
-- [ ] Mouse position
 - [ ] Mouse buttons
+- [ ] Mouse position
 - [ ] Mouse wheel
 - [ ] Input states (Pressed, Released, Held)
-- [ ] Input manager
