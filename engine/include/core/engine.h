@@ -5,9 +5,9 @@
 namespace core {
     class Engine {
     public:
-        std::chrono::duration<double, std::milli> frameDelay;
+        std::chrono::duration<double, std::milli> frameInterval;
         HWND hwnd;
-        int fps;
+        double fps;
 
         Engine();
         void init();
