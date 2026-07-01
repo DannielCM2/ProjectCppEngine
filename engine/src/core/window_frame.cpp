@@ -1,6 +1,7 @@
 #include <windows.h>
-#include "core/frame.h"
+#include "core/window_frame.h"
 
+// Initialize window function to create a window for the engine
 HWND initWindow()
 {
     const wchar_t CLASS_NAME[] = L"WindowClass";
@@ -45,7 +46,7 @@ LRESULT CALLBACK WindowProc(
     return DefWindowProcW(hwnd, msg, wParam, lParam);
 }
 
-void processMessages() {
+void processWin32Events() {
     MSG msg{};
     while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
         TranslateMessage(&msg);
