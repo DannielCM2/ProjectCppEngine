@@ -2,35 +2,35 @@
 #include <thread>
 #include <chrono>
 #include "core/engine.h"
-#include "core/frame.h"
+#include "core/window_frame.h"
+#include "utils/time_util.h"
 #include <windows.h>
 
-// Engine constructor initializes the frame rate and calculates the frame delay based on the desired frames per second (fps).
 core::Engine::Engine() {
-    fps = 60;
-    frameDelay = std::chrono::duration<double, std::milli>(1000.0 / fps);
+    fps = 120.0;
+    frameInterval = std::chrono::duration<double, std::milli>(1000.0 / fps);
 }
 
+// Initializes engine components
 void core::Engine::init() {
     hwnd = initWindow();
 }
 
-// The start method runs the main loop of the engine, printing messages to indicate the engine's state and managing frame timing to maintain a consistent frame rate.
+// This function serves as entry point for the engine's main loop.
 void core::Engine::start() {
     bool running = true;
-
+    auto lastFrameStart = std::chrono::steady_clock::now();;
+    
     while (running) {
-        processMessages();
-
         auto frameStart = std::chrono::steady_clock::now();
 
-        auto frameEnd = std::chrono::steady_clock::now();
+        processWin32Events();
 
-        std::chrono::duration<double, std::milli> elapsed = frameEnd - frameStart;
-        double sleepTime = frameDelay.count() - elapsed.count();
-
-        if (sleepTime > 0) {
-            std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(sleepTime));
-        }
+        std::chrono::duration<double, std::milli> deltaTime = frameStart - lastFrameStart;
+        lastFrameStart = frameStart;
+        
+        std::cout << " Delta Time: " << deltaTime.count() << "ms\n";
+        
+        sleepUntilNextFrame(frameStart, frameInterval);
     }
 }
