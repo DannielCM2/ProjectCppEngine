@@ -13,4 +13,4 @@
   - [x] Main loop
   - [x] Window creation
   - [x] Close window event
-  - [ ] Delta time
+  - [x] Delta time

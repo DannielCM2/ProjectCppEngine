@@ -4,4 +4,4 @@
 HWND initWindow();
 LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 
-void processMessages();
+void processWin32Events();
