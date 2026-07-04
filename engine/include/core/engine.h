@@ -16,6 +16,7 @@ namespace Engine {
         bool isRunning() const { return m_running; };
         void stop() { m_running = false; };
         void setFps(double fps);
+        double getFps() const { return m_fps; };
         std::chrono::duration<double, std::milli> getFrameInterval() const { return m_frameInterval; };
 
     private:

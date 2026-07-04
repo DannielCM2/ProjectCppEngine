@@ -2,35 +2,43 @@
 #include <thread>
 #include <chrono>
 #include "core/engine.h"
-#include "core/window_frame.h"
 #include "utils/time_util.h"
+#include "input/input.h"
 #include <windows.h>
 
-core::Engine::Engine() {
-    fps = 120.0;
-    frameInterval = std::chrono::duration<double, std::milli>(1000.0 / fps);
-}
+namespace Engine {
+    Engine::Engine() {
+        setFps(60.0);
+    }
 
-// Initializes engine components
-void core::Engine::init() {
-    hwnd = initWindow();
-}
-
-// This function serves as entry point for the engine's main loop.
-void core::Engine::start() {
-    bool running = true;
-    auto lastFrameStart = std::chrono::steady_clock::now();;
+    // Initializes engine components
+    void Engine::init(){
+        m_windowFrame.initWindow();
+    };
     
-    while (running) {
-        auto frameStart = std::chrono::steady_clock::now();
+    // This function serves as entry point for the engine's main loop.
+    void Engine::start() {
+        auto lastFrameStart = std::chrono::steady_clock::now();;
 
-        processWin32Events();
+        while (isRunning()) {
+            auto frameStart = std::chrono::steady_clock::now();
 
-        std::chrono::duration<double, std::milli> deltaTime = frameStart - lastFrameStart;
-        lastFrameStart = frameStart;
-        
-        std::cout << " Delta Time: " << deltaTime.count() << "ms\n";
-        
-        sleepUntilNextFrame(frameStart, frameInterval);
+            processEvents();
+
+            std::chrono::duration<double, std::milli> deltaTime = frameStart - lastFrameStart;
+            lastFrameStart = frameStart;
+                        
+            sleepUntilNextFrame(frameStart, getFrameInterval());
+        }
+    }
+
+    void Engine::processEvents() {
+        m_input.update();
+        m_windowFrame.processWin32Events();
+    }
+
+    void Engine::setFps(double fps) {
+        m_fps = fps;
+        m_frameInterval = std::chrono::duration<double, std::milli>(1000.0 / m_fps);
     }
 }
