@@ -14,6 +14,7 @@ namespace Engine {
     // Initializes engine components
     void Engine::init(){
         m_windowFrame.initWindow();
+        m_windowFrame.setInput(&m_input);
     };
     
     // This function serves as entry point for the engine's main loop.
