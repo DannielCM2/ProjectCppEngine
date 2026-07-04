@@ -1,8 +1,10 @@
 #include <iostream>
 #include <windows.h>
 #include "core/engine.h"
+#include "logger/crash_handler.h"
 
 int main() {
+    SetUnhandledExceptionFilter(CrashHandler);
     timeBeginPeriod(1);
 
     Engine::Engine engine;
