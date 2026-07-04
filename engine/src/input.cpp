@@ -1,4 +1,5 @@
-#include <input/input.h>
+#include <iostream>
+#include "input/input.h"
 
 namespace Engine {
     Input::Input() = default;
@@ -11,10 +12,12 @@ namespace Engine {
     }
 
     void Input::onKeyDown(std::uint8_t keyCode) {
+        std::cout << "Key Down: " << static_cast<char>(keyCode) << '\n';
         m_keyboard[keyCode].current = true;
     }
 
     void Input::onKeyUp(std::uint8_t keyCode) {
+        std::cout << "Key Up: " << static_cast<char>(keyCode) << '\n';
         m_keyboard[keyCode].current = false;
     }
 
