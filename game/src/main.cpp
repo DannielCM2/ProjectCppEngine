@@ -5,7 +5,7 @@
 int main() {
     timeBeginPeriod(1);
 
-    core::Engine engine;
+    Engine::Engine engine;
     std::cout << "Welcome to ProjectCppEngine!\n";
     engine.init();
     engine.start();
