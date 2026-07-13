@@ -4,7 +4,8 @@
 ## Requirments
   - C++17
   - CMAKE
-
+  - GCC MinGW
+    
 ## Installation
   cmake --build build
 
